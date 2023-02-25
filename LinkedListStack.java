@@ -44,7 +44,7 @@ public class LinkedListStack {
      * Return the top item of the stack.
      * @return the top item of the stack
      */
-    public char top() {
+    public String top() {
         if (head == null) {
             System.out.println("Stack is empty");
             return 0;
