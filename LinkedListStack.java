@@ -71,14 +71,14 @@ public class LinkedListStack {
  * This is a node class
  */
 class Node {
-    private char item;
+    private String item;
     private Node next;
 
     public Node() {
         next = null;
     } // Node constructor
 
-    public Node(char item, Node node) {
+    public Node(String item, Node node) {
         this.item = item;
         this.next = node;
     } // Node constructor
@@ -86,13 +86,13 @@ class Node {
     /**
      * Get the current item in the node.
      */
-    public char getItem() {return this.item;} // getItem
+    public String getItem() {return this.item;} // getItem
 
     /**
      * Set the item of the node.
      * @param item the item to be set
      */
-    public void setItem(char item) {this.item = item;} // setItem
+    public void setItem(String item) {this.item = item;} // setItem
 
     /**
      * Get the next node.
