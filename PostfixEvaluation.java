@@ -3,42 +3,52 @@
  */
 public class PostfixEvaluation {
 
-    public double evaluate(LinkedListStack stack) {
+    public static double evaluate(LinkedListStack stack) {
         LinkedListStack tempStack = new LinkedListStack();
+        LinkedListStack reversedStack = new LinkedListStack();
+        String answer = null;
         while (stack.top() != null) {
-            if (!stack.top().equals(" ") ||
-            !stack.top().equals("+") ||
-            !stack.top().equals("-") ||
-            !stack.top().equals("*") ||
-            !stack.top().equals("/")) {
-                tempStack.push(stack.pop());
-            } else if (stack.top().equals("+")) {
-                double num2 = Double.parseDouble(stack.pop());
-                double num1 = Double.parseDouble(stack.pop());
+            reversedStack.push(stack.pop());
+        }
+        while (reversedStack.top() != null) {
+            if (!reversedStack.top().equals(" ") &&
+            !reversedStack.top().equals("+") &&
+            !reversedStack.top().equals("-") &&
+            !reversedStack.top().equals("*") &&
+            !reversedStack.top().equals("/")) {
+                answer = reversedStack.pop();
+                tempStack.push(answer);
+            } else if (reversedStack.top().equals("+")) {
+                double num2 = Double.parseDouble(tempStack.pop());
+                double num1 = Double.parseDouble(tempStack.pop());
                 double result = num1 + num2;
                 tempStack.push("" + result);
-            } else if (stack.top().equals("-")) {
-                double num2 = Double.parseDouble(stack.pop());
-                double num1 = Double.parseDouble(stack.pop());
+                answer = reversedStack.pop();
+            } else if (reversedStack.top().equals("-")) {
+                double num2 = Double.parseDouble(tempStack.pop());
+                double num1 = Double.parseDouble(tempStack.pop());
                 double result = num1 - num2;
                 tempStack.push("" + result);
-            } else if (stack.top().equals("*")) {
-                double num2 = Double.parseDouble(stack.pop());
-                double num1 = Double.parseDouble(stack.pop());
+                answer = reversedStack.pop();
+            } else if (reversedStack.top().equals("*")) {
+                double num2 = Double.parseDouble(tempStack.pop());
+                double num1 = Double.parseDouble(tempStack.pop());
                 double result = num1 * num2;
                 tempStack.push("" + result);
-            } else if (stack.top().equals("/")) {
-                double num2 = Double.parseDouble(stack.pop());
-                double num1 = Double.parseDouble(stack.pop());
+                answer = reversedStack.pop();
+            } else if (reversedStack.top().equals("/")) {
+                double num2 = Double.parseDouble(tempStack.pop());
+                double num1 = Double.parseDouble(tempStack.pop());
                 double result = num1 / num2;
                 tempStack.push("" + result);
-            } else {
-                String answer = stack.pop();
-                if (stack.top() != null) return Double.parseDouble(answer);
+                answer = reversedStack.pop();
+            } else if (reversedStack.top().equals(" ")) {
+                reversedStack.pop();
             } // else
 
-
+            if (reversedStack.top() == null) return Double.parseDouble(tempStack.pop());
         } // while
+        return 0;
     } // evaluate
 
 } // class

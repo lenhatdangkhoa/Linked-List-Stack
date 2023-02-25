@@ -1,16 +1,16 @@
-public class PostfixConversion() {
+public class PostfixConversion {
 
     private boolean checker;
 
     public boolean validate(LinkedListStack stack) {
         LinkedListStack stack1 = new LinkedListStack();
         while (stack.top() != null) {
-            if (stack.top() = "(") {
-                stack1.push(stack.pop()); // adds intial opening (
-            } else if (stack.top() != "(") {
-                if ((stack.top() == "+" || stack.top() == "-" || stack.top() == "*"
-                || stack.top() == "/") && (stack1.top() == "+" || stack1.top() == "-"
-                || stack1.top() == "*"  || stack1.top() == "/")) {
+            if (stack.top().equals("(")) {
+                stack1.push(stack.pop()); // adds intial opening
+            } else if (!stack.top().equals("(")) {
+                if ((stack.top().equals("+") || stack.top().equals("-") || stack.top().equals("*")
+                || stack.top().equals("/")) && (stack1.top().equals("+") || stack1.top().equals("-")
+                || stack1.top().equals("*")  || stack1.top().equals("/"))) {
                     return checker = false;
                 } else { // input number here
                     stack1.push(stack.pop());
@@ -20,8 +20,8 @@ public class PostfixConversion() {
             } // else
 
 
-            } // else if
         } // while
+        return false;
     } // validate
 
     public LinkedListStack convert(LinkedListStack stack) {
@@ -30,6 +30,7 @@ public class PostfixConversion() {
         } else {
 
         } // else
+        return null;
     } // convert
 
 } // PostfixConversion

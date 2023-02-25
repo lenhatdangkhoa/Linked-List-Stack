@@ -16,7 +16,7 @@ public class LinkedListStack {
      * Push an item to the stack.
      * @param item the item to be pushed
      */
-    public void push(char item) {
+    public void push(String item) {
         if (head == null) {
             head = new Node(item, null);
         } else {
@@ -29,12 +29,11 @@ public class LinkedListStack {
      * Pop the item off the stack.
      * @return the item popped
      */
-    public char pop() {
+    public String pop() {
         if (head == null) {
-            System.out.println("Stack is empty");
-            return 0;
+            return null;
         } else {
-            char item = head.getItem();
+            String item = head.getItem();
             head = head.getNext();
             return item;
         } // else
@@ -46,8 +45,7 @@ public class LinkedListStack {
      */
     public String top() {
         if (head == null) {
-            System.out.println("Stack is empty");
-            return 0;
+            return null;
         } else {
             return head.getItem();
         } // else
