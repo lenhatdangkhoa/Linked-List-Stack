@@ -6,11 +6,18 @@ public class PostfixConversion() {
         LinkedListStack stack1 = new LinkedListStack();
         while (stack.top() != null) {
             if (stack.top() = "(") {
-                stack1.push(stack.pop());
+                stack1.push(stack.pop()); // adds intial opening (
             } else if (stack.top() != "(") {
-                if (stack1.top(stack.pop())) {
+                if ((stack.top() == "+" || stack.top() == "-" || stack.top() == "*"
+                || stack.top() == "/") && (stack1.top() == "+" || stack1.top() == "-"
+                || stack1.top() == "*"  || stack1.top() == "/")) {
+                    return checker = false;
+                } else { // input number here
+                    stack1.push(stack.pop());
+                } // else
+            } else { // checks for ending )
 
-                } // if
+            } // else
 
 
             } // else if
@@ -18,7 +25,11 @@ public class PostfixConversion() {
     } // validate
 
     public LinkedListStack convert(LinkedListStack stack) {
+        if (checker = false) {
+            System.out.println("Invalid expression, check your stack.");
+        } else {
 
+        } // else
     } // convert
 
 } // PostfixConversion
